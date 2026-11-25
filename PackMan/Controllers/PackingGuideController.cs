@@ -2,9 +2,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace PackMan.Controllers;
 
-public class HomeController : Controller {
+public class PackingGuideController : Controller {
 
-  public IActionResult Index() {
+  public IActionResult PackingGuide() {
     return View();
   }
 }
