@@ -1,10 +1,9 @@
 using System.Collections;
 
-
 namespace PackMan.Models;
 
 public class Order {
-  int TransportOrderId { get; set; }
-  int RefOrderId { get; set; }
-  public List<Element> Elements { get; set; } = new List<Element>();
+  public int TransportOrderId { get; set; }
+  public int RefOrderId { get; set; }
+  public ICollection<Element> Elements { get; set; } = new  List<Element>();
 }
