@@ -9,3 +9,23 @@
 <div>
   <a asp-controller="Orders" asp-action="Orders" class="btn btn-primary">go to orders</a>
 </div>
+
+<div>
+  <form asp-action="Import" method="post" enctype="multipart/form-data">
+
+    <div class="mb-3">
+      <input class="form-control w-50" type="file" name="file"/>
+    </div>
+
+    @if (ViewData["ErrorMessage"] != null) {
+      <div class="alert alert-danger">@ViewData["ErrorMessage"]</div>
+    }
+
+    <div>
+      <p Select an XML-file with one or more orders, and then import the file/>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Import</button>
+  </form>
+</div>
+
