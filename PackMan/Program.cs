@@ -30,6 +30,27 @@ using (var scope = app.Services.CreateScope()) {
   var context = scope.ServiceProvider
       .GetRequiredService<PackManDbContext>();
 
+  // TEST AF EF CORES MODEL
+  var entities = context.Model.GetEntityTypes();
+
+  foreach (var entity in entities) {
+    System.Diagnostics.Debug.WriteLine(
+        $"ENTITY: {entity.ClrType.Name}");
+
+    foreach (var property in entity.GetProperties()) {
+      System.Diagnostics.Debug.WriteLine(
+          $"PROPERTY: {property.Name}");
+    }
+  }
+
+  // Din eksisterende SQL-forbindelsestest
+  bool canConnect = context.Database.CanConnect();
+}
+
+using (var scope = app.Services.CreateScope()) {
+  var context = scope.ServiceProvider
+      .GetRequiredService<PackManDbContext>();
+
   try {
     bool canConnect = context.Database.CanConnect();
 
