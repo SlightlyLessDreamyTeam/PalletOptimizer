@@ -1,16 +1,25 @@
-<!DOCTYPE html>
-<html lang="da">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>@ViewData["Title"] - PackMan</title>
-  <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
-</head>
-<body>
-  <div>
-    @RenderBody()
-  </div>
+@{
+    Layout = "_BaseLayout";
+}
 
-  <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+            <a class="navbar-brand" asp-controller="Order" asp-action="Order">PackMan</a>
+      <ul class="nav navbar-nav">
+                <li class="nav-item"><a class="nav-link" asp-controller="Orders" asp-action="Orders">Orders</a></li>
+                <li class="nav-item"><a class="nav-link" asp-controller="Settings" asp-action="Settings">Settings</a></li>
+                <li class="nav-item"><a class="nav-link" asp-controller="Import" asp-action="Import">Import</a></li>
+                <li class="nav-item"><a class="nav-link" asp-controller="Pallet" asp-action="Pallet">PalletHandeler</a></li>
+                <li class="nav-item"><a class="nav-link" asp-controller="Login" asp-action="Login">Login</a></li>
+                <li class="nav-item"><a class="nav-link" asp-controller="PackingGuide" asp-action="PackingGuide">PackingGuide</a></li>
+                </ul>
+        </div>
+    </nav>
+</header>
+<div class="container align-content-center">
+<main>
+   @RenderBody()
+</main>
+</div>
+
