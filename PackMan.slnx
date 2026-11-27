@@ -4,5 +4,6 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
+  <Project Path="PackMan.Test/PackMan.Test.csproj" Id="2df2b8e7-0be2-4dbe-ad07-f4b9e62c207d" />
   <Project Path="PackMan/PackMan.csproj" />
 </Solution>
