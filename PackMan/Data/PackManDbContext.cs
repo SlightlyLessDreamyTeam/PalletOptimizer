@@ -19,20 +19,23 @@ namespace PackMan.Data {
     protected override void OnModelCreating(ModelBuilder modelBuilder) {
       base.OnModelCreating(modelBuilder);
 
-     
+      modelBuilder.Entity<Order>(entity =>
+      {
+        entity.HasKey(o => o.TransportOrderId);
+        entity.HasMany(o => o.Elements).WithOne(e => e.Order).HasForeignKey(e => e.TransportOrderId);
+        entity.Property(o => o.RefOrderId).IsRequired();
+      });
 
       // Relationen mellem Order og Element
-      modelBuilder.Entity<Order>()
-      .HasMany(e => e.Elements)
-      .WithOne(o => o.Order)
-      .HasPrincipalKey(o => o.TransportOrderId)
-      .HasForeignKey(e => e.ElementId);
+     // modelBuilder.Entity<Order>()
+      
+     
+      
 
       // Begrænsninger på Order
-      modelBuilder.Entity<Order>()
-        .Property(o => o.RefOrderId)
-        .IsRequired()                       // NOT NULL
-        .HasMaxLength(100);                 // NVARCHAR(100)
+     //modelBuilder.Entity<Order>()
+                               // NOT NULL
+    
 
       // Seed Data
       /*modelBuilder.Entity<Customer>().HasData(
@@ -72,6 +75,8 @@ namespace PackMan.Data {
 
       });
 
+   
     }
+
   }
 }
