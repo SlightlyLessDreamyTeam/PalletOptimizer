@@ -1,3 +1,6 @@
+@using PackMan.Models
+@model IEnumerable<Pallet>
+
 @{
   ViewData["Title"] = "Pallet";
 }
@@ -9,3 +12,37 @@
 <div>
   <a asp-controller="Orders" asp-action="Orders" class="btn btn-primary">go to orders</a>
 </div>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+        <th>Palletype</th>
+        <th>Længde</th>
+        <th>Bredde</th>
+        <th>Vægt</th>
+        <th>Max vægt</th>
+        <th>Overmål</th>
+        <th>Status</th>
+        <th>Beskrivelse</th>
+        <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (Pallet p in Model) {
+      <tr>
+        <td> @p.palletType</td>
+        <td>@p.length</td>
+        <td>@p.width</td>
+        <td>@p.Weight</td>
+        <td>@p.MaxWeight</td>
+        <td>@p.Overhang</td>
+        <td>@p.isActive</td>
+        <td>@p.Description</td>
+        <td>
+          <a asp-controller="PalletController" asp-action="Edit" class="btn btn-warning">Rediger</a>
+          <a asp-controller="PalletController" asp-action="Delete" class="btn btn-danger">Slet</a>
+        </td>
+      </tr>
+     }
+    </tbody>
+</table>
