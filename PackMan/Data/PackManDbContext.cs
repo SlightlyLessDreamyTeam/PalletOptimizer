@@ -2,9 +2,10 @@ using Microsoft.EntityFrameworkCore;
 using PackMan.Data;
 using PackMan.Models;
 using System.Reflection.Emit;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace PackMan.Data {
-  public class PackManDbContext : DbContext {
+  public class PackManDbContext : IdentityDbContext<AppUser> {
 
     public PackManDbContext(DbContextOptions<PackManDbContext> options) : base(options) {
 
