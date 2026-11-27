@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using PackMan.Data;
 using PackMan.Models;
 using Microsoft.AspNetCore.Identity;
+using PackMan.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +28,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 });
 
 //builder.Services.AddSingleton<IRepository, Repository>();
+builder.Services.AddScoped<IPalletRepository, PalletRepository>();
 
 var app = builder.Build();
 

@@ -14,6 +14,10 @@ namespace PackMan.Repositories {
       return _context.Pallets.FirstOrDefault(p => p.Id == id);
     }
 
+    public List<Pallet> GetAllPallets() {
+      return _context.Pallets.ToList();
+    }
+
     public void AddPallet(Pallet pallet) {
       _context.Pallets.Add(pallet);
       _context.SaveChanges();

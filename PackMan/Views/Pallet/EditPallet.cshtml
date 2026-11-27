@@ -1,10 +1,12 @@
+@model PackMan.Models.PalletFormViewModel
+@using PackMan.Models
 
 @{
   ViewData["Title"] = "Pallet";
 }
 
 <div>
-  <h1>Rediger palle<h1>
+  <h1>Rediger palle</h1>
 </div>
 
 <div>
@@ -13,39 +15,63 @@
 
 <div class="Row">
   <div class="Col-md-6">
-    <form asp-controller="PalletController" asp-action="Edit">
+    <form asp-controller="Pallet" asp-action="Edit">
+
+      <input type="hidden" asp-for="Id" />
 
       <div class="form-group mb-3">
-        <label for="PalletType" class="control-label ">Palletype</label>
+        <label for="palletType" class="control-label ">Palletype</label>
+        <select asp-for="palletType" Class="form-select"
+        asp-items="Html.GetEnumSelectList<Pallet.PalletType>()">
+        </select>
+        <span asp-validation-for="palletType" class="text-danger"></span>
       </div>
 
       <div class="form-group mb-3">
-        <label for="lenght" class="control-label">Længde</label>
+        <label for="length" class="control-label">Længde</label>
+        <input asp-for="length" class="control-form"/>
+        <span asp-validation-for="length" class="text-danger"></span>
       </div>
 
       <div class="form-group mb-3">
         <label for="width"class="control-label">Bredde</label>
+        <input asp-for="width" class="control-form"/>
+        <span asp-validation-for="width" class="text-danger"></span>
       </div>
 
       <div class="form-group mb-3">
         <label for="Weight" class="control-label">Vægt</label>
+        <input asp-for="Weight" class="control-form"/>
+        <span asp-validation-for="Weight" class="text-danger"></span>
       </div>
 
       <div class="form-group mb-3">
         <label for="MaxWeight" class="control-label">Max. vægt</label>
+        <input asp-for="MaxWeight" class="control-form"/>
+        <span asp-validation-for="MaxWeight" class="text-danger"></span>
       </div>
 
        <div class="form-group mb-3">
         <label for="Overhang" class="control-label">Overmål</label>
+        <input asp-for="Overhang" class="control-form"/>
+        <span asp-validation-for="Overhang" class="text-danger"></span>
       </div>
 
        <div class="form-group mb-3">
-        <label for="isActive" class="control-label">Status</label>
+         <div class="form-check form-switch">
+           <input asp-for="isActive" class="form-check-input" type="checkbox" role="switch"/>
+           <label for="isActive" class="control-label">Status</label>
+         </div>
+        
       </div>
 
       <div class="form-group mb-3">
         <label for="Description" class="control-label">Beskrivelse</label>
+        <textarea asp-for="Description" class="control-form"> </textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
       </div>
+
+      <button type="submit" class="btn btn-primary">Gem</button>
 
     </form>
   </div>
