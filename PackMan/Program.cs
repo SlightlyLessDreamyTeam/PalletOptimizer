@@ -26,22 +26,5 @@ app.MapControllerRoute(
     pattern: "{controller=Login}/{action=Login}/{id?}")
   .WithStaticAssets();
 
-using (var scope = app.Services.CreateScope()) {
-  var context = scope.ServiceProvider
-      .GetRequiredService<PackManDbContext>();
-
-  try {
-    bool canConnect = context.Database.CanConnect();
-
-    System.Diagnostics.Debug.WriteLine(canConnect
-        ? "Forbindelse til SQL Server OK!"
-        : "Kunne ikke oprette forbindelse.");
-  }
-  catch (Exception ex) {
-    System.Diagnostics.Debug.WriteLine($"Fejl: {ex.Message}");
-  }
-}
-
-System.Diagnostics.Debug.WriteLine("MIN TEST VIRKER!");
 
 app.Run();
