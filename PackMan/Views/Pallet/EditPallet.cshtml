@@ -1,0 +1,52 @@
+
+@{
+  ViewData["Title"] = "Pallet";
+}
+
+<div>
+  <h1>Rediger palle<h1>
+</div>
+
+<div>
+  <a asp-controller="Orders" asp-action="Orders" class="btn btn-primary">go to orders</a>
+</div>
+
+<div class="Row">
+  <div class="Col-md-6">
+    <form asp-controller="PalletController" asp-action="Edit">
+
+      <div class="form-group mb-3">
+        <label for="PalletType" class="control-label ">Palletype</label>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="lenght" class="control-label">Længde</label>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="width"class="control-label">Bredde</label>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="Weight" class="control-label">Vægt</label>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="MaxWeight" class="control-label">Max. vægt</label>
+      </div>
+
+       <div class="form-group mb-3">
+        <label for="Overhang" class="control-label">Overmål</label>
+      </div>
+
+       <div class="form-group mb-3">
+        <label for="isActive" class="control-label">Status</label>
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="Description" class="control-label">Beskrivelse</label>
+      </div>
+
+    </form>
+  </div>
+</div>
