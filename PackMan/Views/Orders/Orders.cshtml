@@ -1,16 +1,36 @@
 @{
-  ViewData["Title"] = "Orders";
-}
+    ViewData["Title"] = "Orders";
+ 
+ }
 
 <div>
   <h1>Velkommen til PackMan-Orders</h1>
 </div>
 
 <div>
-  <a asp-controller="Settings" asp-action="Settings" class="btn btn-primary">go to Settings</a>
-  <a asp-controller="Import" asp-action="Import" class="btn btn-primary">go to Import</a>
-  <a asp-controller="Pallet" asp-action="Pallet" class="btn btn-primary">go to PalletHandeler</a>
-  <a asp-controller="Login" asp-action="Login" class="btn btn-primary">go to Login</a>
-  <a asp-controller="PackingGuide" asp-action="PackingGuide" class="btn btn-primary">go to PackingGuide</a>
+    <table class="table">
+
+        <thead>
+            <th>Id</th>
+            <th>Reference ordrenummer</th>
+            <th>Actions</th> 
+        </thead>
+
+        <tbody>
+            @foreach (var Order in Model)
+            {
+                <tr>
+                    <td>@Order.TransportOrderId</td>
+                    <td>@Order.RefOrderId</td>
+                    <td>
+                       
+                        <a asp-action="PackingGuide" asp-route-id="@Order.TransportOrderId" class="btn btn-primary btn-lg">Pak</a>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
 </div>
 
