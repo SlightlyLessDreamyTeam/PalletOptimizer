@@ -30,7 +30,20 @@ builder.Services.ConfigureApplicationCookie(options =>
 
 var app = builder.Build();
 
+//DETTE ER EN TEST PERSON. 
+if (app.Environment.IsDevelopment()) {
+  using var scope = app.Services.CreateScope();
+  var userManager = scope.ServiceProvider.GetRequiredService<UserManager<AppUser>>();
 
+  if (await userManager.FindByEmailAsync("test@packman.dk") == null) {
+    var testUser = new AppUser {
+      UserName = "admin@admin.dk",
+      Email = "admin@admin.dk"
+    };
+    await userManager.CreateAsync(testUser, "admin");
+  }
+}
+//DETTE ER EN TEST PERSON.
 
 app.UseRouting();
 
